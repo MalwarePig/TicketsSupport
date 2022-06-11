@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GEMAK</title>
+    <!------ JQUERY PARA USAR AJAX ----->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <!-----------------------------------------------     FECHAS MOMENTS     ---------------------------------------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
+  <!--   <script type="text/javascript" src="js/Tablero.js"></script> -->
+</head>
+
+<body>
+    <ion-app>
+        <!-- Cabezera -->
+        <ion-header>
+            <ion-toolbar color="dark">
+               <!--  <ion-buttons slot="start">
+                    <ion-button href="/">
+                        <ion-icon name="exit-sharp"></ion-icon>
+                    </ion-button>
+                </ion-buttons> -->
+                <ion-title>Menu</ion-title>
+                <!-- <ion-buttons slot="end">
+                    <p style="margin-right: 2.5em;">Total: <span id="total"></span></p>
+                </ion-buttons> -->
+            </ion-toolbar>
+        </ion-header>
+
+        <!-- Contenido -->
+        <ion-content>
+            <div>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-list>
+
+                                <ion-card href="/FormElectrico">
+                                    <ion-item>
+                                        <ion-avatar slot="start">
+                                            <img src="/images/electrico.png">
+                                        </ion-avatar>
+                                        <ion-label>
+                                            <h3>Reporte Electrico</h3>
+                                            <p>Dec 10, 2019</p>
+                                        </ion-label>
+                                    </ion-item>
+                                   <!--  <img src="/images/electrico.png" alt="ion"> -->
+                                    <ion-card-header>
+                                        <ion-card-title>Electrico</ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content>
+                                       •Cableado •Iluminación •Energia
+                                    </ion-card-content> 
+                                </ion-card>
+
+
+                                <ion-card href="/FormMantenimiento">
+                                    <ion-item>
+                                        <ion-avatar slot="start">
+                                            <img src="/images/mantenimiento.png">
+                                        </ion-avatar>
+                                        <ion-label>
+                                            <h3>Reporte Mantenimiento</h3>
+                                            <p>Dec 10, 2019</p>
+                                        </ion-label>
+                                    </ion-item>
+                                   <!--  <img src="/images/electrico.png" alt="ion"> -->
+                                    <ion-card-header>
+                                        <ion-card-title>Mantenimiento</ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content>
+                                       •Maquinas •Fugas •Reparaciones
+                                    </ion-card-content> 
+                                </ion-card>
+
+
+                                <ion-card href="/FormSistemas">
+                                    <ion-item>
+                                        <ion-avatar slot="start">
+                                            <img src="/images/sistemas.png">
+                                        </ion-avatar>
+                                        <ion-label>
+                                            <h3>Reporte Sistemas</h3>
+                                            <p>Dec 10, 2019</p>
+                                        </ion-label>
+                                    </ion-item>
+                                   <!--  <img src="/images/electrico.png" alt="ion"> -->
+                                    <ion-card-header>
+                                        <ion-card-title>Sistemas</ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content>
+                                       •Internet •Equipo computo •Impresoras
+                                    </ion-card-content> 
+                                </ion-card>
+
+                                
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+        </ion-content>
+
+        <!-- Footer  -->
+        <!-- <ion-footer class="ion-no-border">
+            <ion-toolbar>
+                <ion-button expand="block" color="dark" id="trigger-button">Nuevo Proyecto</ion-button>
+            </ion-toolbar>
+        </ion-footer> -->
+
+        <!-- Modal nuevo Proyecto -->
+        <ion-modal trigger="trigger-button" id="ModalNuevoProyecto">
+            <ion-header>
+                <ion-toolbar color="dark">
+                    <ion-title>NUEVO PROYECTO </ion-title>
+                    <ion-buttons slot="primary">
+                        <ion-button onClick="dismissModal()">
+                            <ion-icon slot="icon-only" name="close"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <ion-card-content>
+                    <ion-item margin-vertical>
+                        <ion-label position="floating">Nombre proyecto</ion-label>
+                        <ion-input type="text" id="NombreProyecto"> </ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Descripción</ion-label>
+                        <ion-input type="text" id="DescripcionProyecto"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label id="labelInicio">Inicio</ion-label>
+                        <!--      <ion-input id="Inicio"></ion-input> -->
+                        <ion-button slot="end" fill="clear" id="open-Inicio">
+                            <ion-icon icon="calendar"></ion-icon>
+                        </ion-button>
+                        <ion-popover trigger="open-Inicio" show-backdrop="false" id="PopoverInicio">
+                            <ion-datetime presentation="date" id="CalendarioInicio">
+                                <!--  <ion-buttons slot="buttons">
+                                    <ion-button onclick="dismissCalendario('Inicio')">OK</ion-button>
+                                </ion-buttons> -->
+                            </ion-datetime>
+                        </ion-popover>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label id="labelVencimiento">Fin</ion-label>
+                        <!--      <ion-input id="Vencimiento"></ion-input> -->
+                        <ion-button slot="end" fill="clear" id="open-Vencimiento">
+                            <ion-icon icon="calendar"></ion-icon>
+                        </ion-button>
+                        <ion-popover trigger="open-Vencimiento" show-backdrop="false" id="PopoverFin">
+                            <ion-datetime presentation="date" id="CalendarioVencimiento">
+
+                            </ion-datetime>
+                        </ion-popover>
+                    </ion-item>
+
+                    <div margin-vertical text-right>
+                        <ion-button id="Boton" onclick="RegistrarProyecto()">
+                            <ion-icon name="add-circle" slot="start"></ion-icon>
+                            Guardar
+                        </ion-button>
+                        <ion-button fill="outline" color="danger" id="button-cancel" onclick="LimpiarFormProyectos()">
+                            <ion-icon name="trash" slot="start"></ion-icon>
+                            Limpiar
+                        </ion-button>
+                    </div>
+                </ion-card-content>
+            </ion-content>
+        </ion-modal>
+    </ion-app>
+
+
+
+    <!-- Bloque oculto  -->
+    <div id="Item-Borrador" style="display: none;">
+        <ion-item id="indiceProyecto">
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-title id="Titulo-Borrador">Nombre Proyecto</ion-card-title>
+                        <!--  <ion-card-title>Card Title</ion-card-title> -->
+                    </ion-card-header>
+
+                    <ion-card-content id="Contenido-Borrador">
+                        Keep close to Nature's heart... and break clear away, once in awhile,
+                        and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                    </ion-card-content>
+                    <ion-item>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col>
+                                    <ion-label id="Cumplimiento" position="stacked"></ion-label>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-label id="FechasProyecto" position="stacked"></ion-label>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <ion-progress-bar id="BarraCumplimiento"></ion-progress-bar>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+
+        </ion-item>
+    </div>
+
+
+</body>
+
+</html>

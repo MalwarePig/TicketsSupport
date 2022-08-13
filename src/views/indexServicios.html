@@ -25,11 +25,11 @@
         <ion-header>
             <ion-toolbar color="dark">
                 <ion-buttons slot="start">
-                    <ion-button href="/">
+                    <ion-button href="/loginServicio">
                         <ion-icon name="exit-sharp"></ion-icon>
                     </ion-button>
                 </ion-buttons>
-                <ion-title>Menu</ion-title>
+                <ion-title>Menu Servicios</ion-title>
                 <!-- <ion-buttons slot="end">
                     <p style="margin-right: 2.5em;">Total: <span id="total"></span></p>
                 </ion-buttons> -->
@@ -44,7 +44,7 @@
                         <ion-col size-md = "4" offset-md="4">
                             <ion-list>
 
-                                <ion-card href="/ListaElectrico">
+                                <ion-card href="/ListaServicioElectrico">
                                     <ion-item>
                                         <ion-avatar slot="start">
                                             <img src="/images/electrico.png">
@@ -64,7 +64,7 @@
                                 </ion-card>
 
 
-                                <ion-card href="/ListaMantenimiento">
+                                <ion-card href="/ListaServicioMantenimiento">
                                     <ion-item>
                                         <ion-avatar slot="start">
                                             <img src="/images/mantenimiento.png">
@@ -84,7 +84,7 @@
                                 </ion-card>
 
 
-                                <ion-card href="/ListaSistemas">
+                                <ion-card href="/ListaServicioSistemas">
                                     <ion-item>
                                         <ion-avatar slot="start">
                                             <img src="/images/sistemas.png">
@@ -100,6 +100,26 @@
                                     </ion-card-header>
                                     <ion-card-content>
                                        •Internet •Equipo computo •Impresoras
+                                    </ion-card-content> 
+                                </ion-card>
+
+
+                                <ion-card href="/MenuReporte">
+                                    <ion-item>
+                                        <ion-avatar slot="start">
+                                            <img src="/images/Reporte.jpg">
+                                        </ion-avatar>
+                                        <ion-label>
+                                            <h3>Administrador</h3>
+                                            <p>Dec 10, 2019</p>
+                                        </ion-label>
+                                    </ion-item>
+                                   <!--  <img src="/images/electrico.png" alt="ion"> -->
+                                    <ion-card-header>
+                                        <ion-card-title>Reporte General</ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content>
+                                       •Descargar reporte de cada departamento
                                     </ion-card-content> 
                                 </ion-card>
 

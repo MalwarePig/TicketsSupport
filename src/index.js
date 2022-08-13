@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');//motor de plantillas, permite ejecutar javascript
 app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
 
-/* app.use(myConnection(mysql,{
+app.use(myConnection(mysql,{
      //host: '192.168.2.8',
      host:'localhost',
      user: 'Soporte', 
@@ -25,8 +25,8 @@ app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticio
      //user: 'root',
      //password: '1702861',
      port: 3306,
-     database: 'ToDoGemak'
-},'single')) */
+     database: 'Ticket'
+},'single'))
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 

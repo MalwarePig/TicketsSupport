@@ -112,12 +112,16 @@ function MostrarInforme(indice){
     
     $.ajax({
     url: '/ReporteUnitario/' + Planta + '|' + Departamento + '|' + indice,
-    success: function (data) {
-        alert()
+    success: function (data) { 
         document.querySelector("#est_Nombre").innerHTML = data[0].Usuario;
         document.querySelector("#est_Maquina").innerHTML = data[0].Equipo;
         document.querySelector("#est_FechaResgistro").innerHTML = data[0].FechaRegistro;
         document.querySelector("#est_Estatus").innerHTML = data[0].Estatus;
+        document.querySelector("#est_Respuesta").innerHTML = data[0].Respuesta;
+
+        if(data[0].FechaPromesa){
+            document.querySelector("#est_FechaPromesa").innerHTML = 'Fecha promesa ' + moment(data[0].FechaPromesa).format('DD-MM-YYYY');
+        }
         document.querySelector("#ModalEstatus").present()
     } //Funcion success
 }); //Ajax 

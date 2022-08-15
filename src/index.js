@@ -8,7 +8,7 @@ const session = require('express-session');
 const OS = require("os");
  
 //Configuracion Servidor
-app.set('port',process.env.PORT || 4000)//asignar puerto, si lo da el So que lo tome, sino el 3000
+app.set('port',process.env.PORT || 3000)//asignar puerto, si lo da el So que lo tome, sino el 3000
 app.set('views',path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);//usara el motor ejs para archivos html
 app.set('view engine', 'ejs');//motor de plantillas, permite ejecutar javascript y traducirlo a html
@@ -18,14 +18,14 @@ app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
 
 app.use(myConnection(mysql,{
-     //host: '192.168.2.8',
-     host:'localhost',
+     host: '192.168.2.8',
+     //host:'localhost',
      user: 'Soporte', 
      password: 'Soporte1702861',
      //user: 'root',
      //password: '1702861',
      port: 3306,
-     database: 'Ticket'
+     database: 'sigg'
 },'single'))
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";

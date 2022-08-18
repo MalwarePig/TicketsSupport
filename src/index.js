@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');//motor de plantillas, permite ejecutar javascript
 //middlewares //Funciones que se ejecutan antes que lleguen a las rutas
 app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
-
+//nada que suibir
 app.use(myConnection(mysql,{
      host: '192.168.2.8',
      //host:'localhost',

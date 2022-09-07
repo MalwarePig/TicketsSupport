@@ -22,8 +22,9 @@ function Registrar() {
     let Notas = document.querySelector("#Notas").value || '';
     let Rama = document.querySelector("#Rama").value || '';
     let Nomina = localStorage.getItem("Nomina");
+    let Impacto = document.querySelector("#Impacto").value || '';
     
-    var Arreglo = [Nombre,Planta,Falla,Notas,Rama,Nomina]; 
+    var Arreglo = [Nombre,Planta,Falla,Notas,Rama,Nomina,Impacto]; 
     var Condicion = true; //para campos vacios
     for (var a in Arreglo) { //recorrer arreglo en busca de campos vacios
         console.log(a)
@@ -39,7 +40,8 @@ function Registrar() {
         Falla: Falla,
         Notas: Notas,
         Rama: Rama,
-        Nomina: Nomina
+        Nomina: Nomina,
+        Impacto:Impacto
     }
 
     console.log(Registro)

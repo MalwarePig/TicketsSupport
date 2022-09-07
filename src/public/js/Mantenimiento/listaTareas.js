@@ -18,12 +18,13 @@ function Registrar() {
     let FechaRegistro = document.querySelector("#FechaRegistro").value;
     let Nombre = document.querySelector("#Nombre").value;
     let Planta = document.querySelector("#Planta").value || '';
-    let Falla = document.querySelector("#Falla").value || '';
+    let Falla ='Maquina #' + document.querySelector("#Falla").value || '';
     let Notas = document.querySelector("#Notas").value || '';
     let Rama = document.querySelector("#Rama").value || '';
     let Nomina = localStorage.getItem("Nomina");
+    let Impacto = document.querySelector("#Impacto").value || '';
 
-    var Arreglo = [Nombre, Planta, Falla, Notas, Rama, Nomina];
+    var Arreglo = [Nombre, Planta, Falla, Notas, Rama, Nomina,Impacto];
     console.log(Arreglo)
     var Condicion = true; //para campos vacios
     for (var a in Arreglo) { //recorrer arreglo en busca de campos vacios
@@ -40,7 +41,8 @@ function Registrar() {
         Falla: Falla,
         Notas: Notas,
         Rama: Rama,
-        Nomina: Nomina
+        Nomina: Nomina,
+        Impacto:Impacto
     }
 
     console.log(Registro)

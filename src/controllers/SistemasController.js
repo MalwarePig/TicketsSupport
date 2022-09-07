@@ -12,9 +12,10 @@ Controller.NuevaTarea = (req, res) => {
         let Notas = Object.values(data)[0].Notas;
         let Rama = Object.values(data)[0].Rama; 
         let Nomina = Object.values(data)[0].Nomina; 
+        let Impacto = Object.values(data)[0].Impacto;
   
-        conn.query("INSERT INTO TareaSistemas(Usuario,Planta,Equipo,Nota,Rama,Nomina)VALUES" +
-            "('" +Nombre + "','" + Planta + "','" + Falla + "','" + Notas + "','"+Rama+"','"+Nomina+"')", (err, Herramientas) => {
+        conn.query("INSERT INTO TareaSistemas(Usuario,Planta,Equipo,Nota,Rama,Nomina,Impacto)VALUES" +
+            "('" +Nombre + "','" + Planta + "','" + Falla + "','" + Notas + "','"+Rama+"','"+Nomina+"','"+Impacto+"')", (err, Herramientas) => {
                 if (err) {
                     console.log('Error de lectura' + err);
                     res.json(false);

@@ -12,9 +12,10 @@ Controller.NuevaTarea = (req, res) => {
         let Notas = Object.values(data)[0].Notas;
         let Rama = Object.values(data)[0].Rama;
         let Nomina = Object.values(data)[0].Nomina;
+        let Impacto = Object.values(data)[0].Impacto;
         console.log("Nomina: " + Nomina)
-        conn.query("INSERT INTO TareaElectrico(Usuario,Planta,Equipo,Nota,Rama,Nomina)VALUES" +
-            "('" + Nombre + "','" + Planta + "','" + Falla + "','" + Notas + "','" + Rama + "','" + Nomina + "')", (err, Herramientas) => {
+        conn.query("INSERT INTO TareaElectrico(Usuario,Planta,Equipo,Nota,Rama,Nomina,Impacto)VALUES" +
+            "('" + Nombre + "','" + Planta + "','" + Falla + "','" + Notas + "','" + Rama + "','" + Nomina + "','"+Impacto+"')", (err, Herramientas) => {
                 if (err) {
                     console.log('Error de lectura' + err);
                     res.json(false);
@@ -94,18 +95,18 @@ Controller.ActualizarTareasElectrico = (req, res) => {
 
         let Servidor_Respuesta = Object.values(data)[0].Servidor_Respuesta;
         let Cierre = Object.values(data)[0].Cierre;
-        let id = Object.values(data)[0].id;  
-        
-         console.log(Cierre)
-        conn.query("UPDATE TareaElectrico SET Respuesta = '"+Servidor_Respuesta+"', FechaPromesa = '"+ Cierre +"' WHERE id = "+id, (err, Herramientas) => {
-                if (err) {
-                    console.log('Error de lectura' + err);
-                    res.json(false);
-                } else {
-                    console.log('Listo')
-                    res.json(true);
-                }
-            });
+        let id = Object.values(data)[0].id;
+
+        console.log(Cierre)
+        conn.query("UPDATE TareaElectrico SET Respuesta = '" + Servidor_Respuesta + "', FechaPromesa = '" + Cierre + "' WHERE id = " + id, (err, Herramientas) => {
+            if (err) {
+                console.log('Error de lectura' + err);
+                res.json(false);
+            } else {
+                console.log('Listo')
+                res.json(true);
+            }
+        });
     });
 };
 
@@ -113,19 +114,19 @@ Controller.CerrarTareasElectrico = (req, res) => {
     req.getConnection((err, conn) => {
         const data = req.body; //TRAE TODO EL OBJETO
 
-        let idTarea = Object.values(data)[0].idTarea; 
-        let Respuesta = Object.values(data)[0].Respuesta;  
+        let idTarea = Object.values(data)[0].idTarea;
+        let Respuesta = Object.values(data)[0].Respuesta;
         let Cierre = Object.values(data)[0].Cierre;
 
-        conn.query("UPDATE TareaElectrico SET Respuesta = '"+Respuesta+"', FechaCierre = '"+ Cierre +"', Estatus = 'Cerrada' WHERE id = "+idTarea, (err, Herramientas) => {
-                if (err) {
-                    console.log('Error de lectura' + err);
-                    res.json(false);
-                } else {
-                    console.log('Listo')
-                    res.json(true);
-                }
-            });
+        conn.query("UPDATE TareaElectrico SET Respuesta = '" + Respuesta + "', FechaCierre = '" + Cierre + "', Estatus = 'Cerrada' WHERE id = " + idTarea, (err, Herramientas) => {
+            if (err) {
+                console.log('Error de lectura' + err);
+                res.json(false);
+            } else {
+                console.log('Listo')
+                res.json(true);
+            }
+        });
     });
 };
 

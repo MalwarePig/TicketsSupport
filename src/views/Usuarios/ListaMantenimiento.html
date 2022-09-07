@@ -113,8 +113,8 @@
                     </ion-item> 
 
                     <ion-item>
-                        <ion-label position="fixed">Eq. Falla: </ion-label>
-                        <ion-input type="text" id="Falla" placeholder=" Ej: Maquina65"></ion-input>
+                        <ion-label position="fixed">Maquina#: </ion-label>
+                        <ion-input type="text" id="Falla" placeholder=" Ej: Maquina#65"></ion-input>
                     </ion-item>
 
                     <ion-item margin-vertical>
@@ -131,6 +131,14 @@
                             <ion-select-option value="Maquina">Montacargas</ion-select-option> 
                         </ion-select>
                     </ion-item> 
+
+                    <ion-item>
+                        <ion-label>Impacto: </ion-label>
+                        <ion-select id="Impacto">
+                            <ion-select-option value="Moderado">Moderado</ion-select-option>
+                            <ion-select-option value="Total">Paro total</ion-select-option>
+                        </ion-select>
+                    </ion-item>
   
                     <ion-button expand="block" color="dark" onclick="Registrar()">Registrar</ion-button>
 

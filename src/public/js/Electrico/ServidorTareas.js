@@ -67,6 +67,23 @@ function MostrarProyectos() {
                 div.innerHTML = ItemOriginal;
                 Lista.appendChild(div);
 
+                let Tarjeta = document.querySelector("#Tarjeta");
+                let Tarjeta_Subtitulo = document.querySelector("#Tarjeta-Subtitulo");
+
+                if(data[index].Impacto == 'Total'){
+                    Tarjeta.setAttribute('color', 'warning');
+                    Tarjeta.id = 'Tarjeta' + index;
+
+                    Tarjeta_Subtitulo.setAttribute('color', 'warning');
+                    Tarjeta_Subtitulo.id = 'Tarjeta-Subtitulo' + index;
+                }else{
+                    Tarjeta.setAttribute('color', 'dark');
+                    Tarjeta.id = 'Tarjeta' + index;
+
+                    Tarjeta_Subtitulo.setAttribute('color', 'dark');
+                    Tarjeta_Subtitulo.id = 'Tarjeta-Subtitulo' + index;
+                }
+                
                 var Titulo = document.querySelector("#Titulo-Borrador");
                 Titulo.innerHTML = data[index].Usuario;
                 Titulo.id = 'Titulo' + index;
@@ -75,7 +92,7 @@ function MostrarProyectos() {
                 //TotalTareas.push((data[index].Tareas-1))
 
                 var SubTitulo = document.querySelector("#SubTitulo-Borrador");
-                SubTitulo.innerHTML = data[index].Equipo;
+                SubTitulo.innerHTML = data[index].Equipo + " | Impacto: " + data[index].Impacto;
                 SubTitulo.id = 'SubTitulo' + index;
 
                 var Contenido = document.querySelector("#Contenido-Borrador");

@@ -60,7 +60,6 @@ function Registrar() {
     }
 }
 
-
 //Mostrar Tareas Activas
 var ListaTareas = []
 var TotalTareas = []

@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/Admin/LoginServicio.js"></script>
 </head>
 
-<body>
+<body onload="CargarCookie()">
     <ion-app>
         <ion-header>
             <ion-toolbar>
@@ -33,8 +33,7 @@
         <ion-content>
             <ion-grid>
                 <ion-row>
-                    <ion-col size-md = "4" offset-md="4">
-
+                    <ion-col size-md = "4" offset-md="4"> 
                         <!-- <div style="margin-top: 25%;"> -->
                         <ion-row class="ion-justify-content-center">
                             <ion-col>
@@ -45,7 +44,7 @@
                         <form justify-content-center>
                             <ion-item lines="full">
                                 <ion-label position="floating">Nómina</ion-label>
-                                <ion-input type="text" required id="Nomina"></ion-input>
+                                <ion-input type="text" required id="Nomina" autocorrect="on"></ion-input>
                             </ion-item>
                             <ion-item>
                                 <ion-label>Planta: </ion-label>
@@ -59,8 +58,7 @@
                                     <ion-button color="danger" expand="block" onclick="Login()">ACEPTAR</ion-button>
                                 </ion-col>
                             </ion-row>
-                        </form>
-
+                        </form> 
 
                     </ion-col>
                 </ion-row>

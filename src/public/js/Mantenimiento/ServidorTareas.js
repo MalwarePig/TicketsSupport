@@ -21,10 +21,13 @@ function ActualizarTareas() {
     console.log(Anio)
     console.log(FechaLabel)
 
+    let est_Minutos = document.querySelector("#est_Minutos").value;
+
     let Registro = {
         Servidor_Respuesta: Servidor_Respuesta,
         Cierre: Cierre,
         id: id,
+        est_Minutos:est_Minutos
     }
 
     console.log(Registro)

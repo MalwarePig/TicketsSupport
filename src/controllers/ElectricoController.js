@@ -29,7 +29,6 @@ Controller.NuevaTarea = (req, res) => {
 
 
 Controller.TareasAbiertasElectrico = (req, res) => {
-
     //res.send('Metodo Get list');
     req.getConnection((err, conn) => {
         const {

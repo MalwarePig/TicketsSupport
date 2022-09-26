@@ -98,13 +98,14 @@ Controller.ActualizarTareasMantenimiento = (req, res) => {
         let Servidor_Respuesta = Object.values(data)[0].Servidor_Respuesta;
         let Cierre = Object.values(data)[0].Cierre;
         let id = Object.values(data)[0].id;  
+        let est_Minutos = Object.values(data)[0].est_Minutos;  
         
          console.log(Cierre)
         conn.query("UPDATE TareaMantenimiento SET Respuesta = '"+Servidor_Respuesta+"', FechaPromesa = '"+ Cierre +"' WHERE id = "+id, (err, Herramientas) => {
                 if (err) {
                     console.log('Error de lectura' + err);
                     res.json(false);
-                } else {
+                } else {    
                     console.log('Listo')
                     res.json(true);
                 }

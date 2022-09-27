@@ -18,7 +18,6 @@ app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
 //nada que suibir
 app.use(myConnection(mysql,{
-     host: '192.168.2.8',
      //host:'localhost',
      user: 'Soporte', 
      password: 'Soporte1702861',

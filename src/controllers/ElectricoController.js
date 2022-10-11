@@ -75,7 +75,7 @@ Controller.TareasAbiertasServidorElectrico = (req, res) => {
         const {
             Argumento
         } = req.params;
-        conn.query("SELECT * FROM TareaElectrico WHERE Estatus != 'Cerrada'", (err, data) => {
+        conn.query("SELECT * FROM TareaElectrico WHERE Estatus != 'Cerrada' AND Planta = '"+req.session.planta+"'" , (err, data) => {
             if (err) {
                 //res.json("Error json: " + err);
                 console.log('Error al registrar recepcion ' + err);

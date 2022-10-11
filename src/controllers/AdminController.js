@@ -10,6 +10,7 @@ Controller.Login = (req, res) => {
         } = req.params;
         console.log("Debe buscar:" + Argumento)
         conn.query("SELECT * FROM empleados WHERE Nomina = '" + Argumento + "'", (err, data) => {
+            req.session.planta = data[0].Planta;
             if (err) {
                 //res.json("Error json: " + err);
                 console.log('Error al buscar empleados ' + err);
@@ -17,6 +18,8 @@ Controller.Login = (req, res) => {
                 console.log(data)
                 if (data.length > 0) {
                     res.json(data)
+                    console.log(data)
+                    req.session.planta = data[0].Planta;
                 } else {
                     res.json(false)
                 }

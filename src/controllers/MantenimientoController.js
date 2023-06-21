@@ -13,9 +13,10 @@ Controller.NuevaTarea = (req, res) => {
         let Rama = Object.values(data)[0].Rama; 
         let Nomina = Object.values(data)[0].Nomina; 
         let Impacto = Object.values(data)[0].Impacto;
+        let OT = Object.values(data)[0].OT;
   
-        conn.query("INSERT INTO TareaMantenimiento(Usuario,Planta,Equipo,Nota,Rama,Nomina,Impacto)VALUES" +
-            "('" +Nombre + "','" + Planta + "','" + Falla + "','" + Notas + "','"+Rama+"','"+Nomina+"','"+Impacto+"')", (err, Herramientas) => {
+        conn.query("INSERT INTO TareaMantenimiento(Usuario,Planta,Equipo,Nota,Rama,Nomina,Impacto,OT)VALUES" +
+            "('" +Nombre + "','" + Planta + "','" + Falla + "','" + Notas + "','"+Rama+"','"+Nomina+"','"+Impacto+"','"+OT+"')", (err, Herramientas) => {
                 if (err) {
                     console.log('Error de lectura' + err);
                     res.json(false);
@@ -23,7 +24,6 @@ Controller.NuevaTarea = (req, res) => {
                       console.log('Listo' )
                     res.json(true);
                 }
-               
             });
     }); 
 };
@@ -71,6 +71,26 @@ Controller.CargarTareaMantenimientoid = (req, res) => {
     }); 
 };
 
+Controller.listaMaquinas = (req, res) => {
+  
+    //res.send('Metodo Get list');
+    req.getConnection((err, conn) => {
+        const {
+            Argumento
+        } = req.params;
+
+        conn.query("SELECT * FROM Maquinas WHERE Planta = '"+Argumento+"'", (err, data) => {
+            if (err) {
+                //res.json("Error json: " + err);
+                console.log('Error:' + err);
+            } else {
+                console.log(data);
+                res.json(data)
+            }
+        });
+    }); 
+};
+
 Controller.TareasAbiertasServidorMantenimiento = (req, res) => {
 
     //res.send('Metodo Get list');
@@ -101,7 +121,7 @@ Controller.ActualizarTareasMantenimiento = (req, res) => {
         let est_Minutos = Object.values(data)[0].est_Minutos;  
         
          console.log(Cierre)
-        conn.query("UPDATE TareaMantenimiento SET Respuesta = '"+Servidor_Respuesta+"', FechaPromesa = '"+ Cierre +"' WHERE id = "+id, (err, Herramientas) => {
+        conn.query("UPDATE TareaMantenimiento SET Respuesta = '"+Servidor_Respuesta+"', FechaPromesa = '"+ Cierre +"',Minutos = '"+est_Minutos+"' WHERE id = "+id, (err, Herramientas) => {
                 if (err) {
                     console.log('Error de lectura' + err);
                     res.json(false);

@@ -18,11 +18,12 @@ function Registrar() {
     let FechaRegistro = document.querySelector("#FechaRegistro").value;
     let Nombre = document.querySelector("#Nombre").value;
     let Planta = document.querySelector("#Planta").value || '';
-    let Falla ='Maquina #' + document.querySelector("#Falla").value || '';
+    let Falla = document.querySelector("#listMaquinas").value || '';
     let Notas = document.querySelector("#Notas").value || '';
     let Rama = document.querySelector("#Rama").value || '';
     let Nomina = localStorage.getItem("Nomina");
     let Impacto = document.querySelector("#Impacto").value || '';
+    let OT = document.querySelector("#OT").value || '';
 
     var Arreglo = [Nombre, Planta, Falla, Notas, Rama, Nomina,Impacto];
     console.log(Arreglo)
@@ -42,7 +43,8 @@ function Registrar() {
         Notas: Notas,
         Rama: Rama,
         Nomina: Nomina,
-        Impacto:Impacto
+        Impacto: Impacto,
+        OT: OT
     }
 
     console.log(Registro)
@@ -64,7 +66,7 @@ function Registrar() {
 var ListaTareas = []
 var TotalTareas = []
 function MostrarProyectos() {
-
+    Maquinas()
     //Limpiar Lista Maestra
     var Lista = document.querySelector("#ListaMaestra");
     while (Lista.firstChild) {
@@ -157,4 +159,68 @@ function EscribirModalStatus() {
             } 
         } //Funcion success
     }); //Ajax 
+}
+
+
+ 
+
+/* 
+function Maquinas() {
+    let planta = localStorage.getItem("Planta") 
+    var listMaquina = document.getElementById("listMaquinas");
+    let totalOptions = listMaquina.attributes.length
+    $.ajax({
+        url: '/listaMaquinas/'+planta,
+        success: function (maquinas) {
+            //console.log(maquinas)
+            console.log(listMaquina.attributes.length)
+           /*  for (let i = totalOptions; i >= 0; i--) { //Borrar elementos option de select
+                listMaquina.remove(i);
+            } 
+            for (var i = 0; i < maquinas.length; i++) { //Agregar nuevos options del select
+                var option = document.createElement("ion-select-option");
+                var div = document.createElement("div"); 
+                div.setAttribute('class', 'alert-button-inner sc-ion-alert-md');
+                option.appendChild(div);
+
+                var divText = document.createElement("div");
+                divText.setAttribute('class', 'alert-radio-label sc-ion-alert-md');
+                divText.innerText = "ss" 
+                option.appendChild(divText);
+                listMaquina.appendChild(option);
+
+                /* 
+                option.text = maquinas[i].Nombre;
+                option.value = maquinas[i].Nombre;
+                console.log(option)
+                
+                //;
+            }   
+        } //Funcion success
+    }); //Ajax
+} */
+
+
+
+function Maquinas() {
+    let planta = localStorage.getItem("Planta") 
+    var listMaquina = document.getElementById("listMaquinas");
+    let totalOptions = listMaquina.attributes.length
+    $.ajax({
+        url: '/listaMaquinas/'+planta,
+        success: function (maquinas) {
+            //console.log(maquinas)
+            console.log(listMaquina.attributes.length)
+            
+            maquinas.forEach((option, i) => {
+                const selectOption = document.createElement('ion-select-option');
+                selectOption.value = option.Nombre;
+                selectOption.textContent = option.Nombre;
+                listMaquina.appendChild(selectOption);
+              });
+            
+
+
+        } //Funcion success
+    }); //Ajax
 }

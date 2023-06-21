@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
 	res.render('./Admin/loginCliente.html'); 
 });
 
-
 //Menu Principal
 router.get('/Home', (req, res) => {
 	//res.send('holoo');
@@ -19,9 +18,6 @@ router.get('/Home', (req, res) => {
 });
 
 router.get('/Login/:Argumento', AdminController.Login);
-
-
-
 /*********************************************** ELECTRICO ***********************************************/
 router.get('/ListaElectrico', (req, res) => {
 	//res.send('holoo');
@@ -45,6 +41,7 @@ router.post('/registrarMantenimiento', MantenimientoController.NuevaTarea);
 //Cargar TareasAbiertas
 router.get('/TareasAbiertasMantenimiento/:Argumento', MantenimientoController.TareasAbiertasMantenimiento);
 router.get('/CargarTareaMantenimientoid/:Argumento', MantenimientoController.CargarTareaMantenimientoid);
+router.get('/listaMaquinas/:Argumento', MantenimientoController.listaMaquinas);
 
 /********************************************* SISTEMAS *********************************************/
 router.get('/ListaSistemas', (req, res) => {
@@ -58,9 +55,7 @@ router.post('/registrarSistemas', SistemasController.NuevaTarea);
 router.get('/TareasAbiertasSistemas/:Argumento', SistemasController.TareasAbiertasSistemas);
 router.get('/CargarTareaSistemasid/:Argumento', SistemasController.CargarTareaSistemasid);
 
- 
 /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  
 //Menu Principal
 router.get('/loginServicio', (req, res) => {
 	//res.send('holoo');
@@ -69,13 +64,11 @@ router.get('/loginServicio', (req, res) => {
 
 router.get('/LoguearServicio/:Argumento', AdminController.Login);
 
-
 //Menu Principal
 router.get('/HomeServicios', (req, res) => {
 	//res.send('holoo');
 	res.render('indexServicios.html'); 
 });
-
 
 /*********************************************** ELECTRICO ***********************************************/
 router.get('/ListaServicioElectrico', (req, res) => {
@@ -118,9 +111,7 @@ router.post('/ActualizarTareasSistemas', SistemasController.ActualizarTareasSist
 //Cerrartarea
 router.post('/CerrarTareasSistemas', SistemasController.CerrarTareasSistemas);
 
-
 /*********************************************** REPORTE ***********************************************/
-
 router.get('/MenuReporte', (req, res) => {
 	//res.send('holoo');
 	res.render('./Servidores/Reporte.html'); 
@@ -132,17 +123,6 @@ router.get('/Reporte/:Argumento', AdminController.Reporte);
 //Cargar TareasAbiertas vistas por el servidor
 router.get('/ReporteUnitario/:Argumento', AdminController.ReporteUnitario);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
+
+

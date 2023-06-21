@@ -82,22 +82,23 @@ function MostrarProyectos() {
 function ExportarReporte() {
 
     var limite = DataReporte.length;
-    var sheet_1_data = [['Usuario', 'Planta', 'Equipo', 'Nota', 'Rama', 'FechaRegistro', 'FechaPromesa','FechaCierre','Respuesta','Estatus']];
+    var sheet_1_data = [['Usuario', 'Planta', 'Equipo','OT','Minutos','Nota', 'Rama', 'FechaRegistro', 'FechaPromesa','FechaCierre','Respuesta','Estatus']];
 
     for (var i = 0; i < limite; i++) {
         var Usuario = DataReporte[i].Usuario;
         var Planta = DataReporte[i].Planta;
         var Equipo = DataReporte[i].Equipo;
+        var OT = DataReporte[i].OT || '-';
         var Nota = DataReporte[i].Nota;
         var Rama = DataReporte[i].Rama;
-        var FechaRegistro = DataReporte[i].FechaRegistro;
-        var FechaPromesa = DataReporte[i].FechaPromesa;
-        var FechaCierre = DataReporte[i].FechaCierre;
+        var FechaRegistro =  moment(DataReporte[i].FechaRegistro).format('DD-MM-YYYY');
+        var FechaPromesa = moment(DataReporte[i].FechaPromesa).format('DD-MM-YYYY'); 
+        var FechaCierre = moment(DataReporte[i].FechaCierre).format('DD-MM-YYYY');;
         var Respuesta = DataReporte[i].Respuesta;
         var Estatus = DataReporte[i].Estatus;
+        var Minutos = DataReporte[i].Minutos || 0;
 
-        var Fila = [Usuario, Planta,Equipo ,Nota ,Rama ,FechaRegistro ,FechaPromesa ,FechaCierre ,Respuesta , Estatus];
-
+        var Fila = [Usuario, Planta,Equipo ,OT,Minutos, Nota ,Rama ,FechaRegistro ,FechaPromesa ,FechaCierre ,Respuesta , Estatus]; 
         sheet_1_data.push(Fila);
     } //fin de for de filas
 
@@ -105,11 +106,10 @@ function ExportarReporte() {
         sheetid: 'Hoja1',
         header: false
     }];
-    var result = alasql('SELECT * INTO XLSX("'+Departamento+'.xlsx",?) FROM ?', [opts, [sheet_1_data]]); 
+    var result = alasql('SELECT * INTO XLSX("'+Departamento+' '+moment().format('l')+'.xlsx",?) FROM ?', [opts, [sheet_1_data]]); 
 }
 
-function MostrarInforme(indice){
-    
+function MostrarInforme(indice){ 
     $.ajax({
     url: '/ReporteUnitario/' + Planta + '|' + Departamento + '|' + indice,
     success: function (data) { 
